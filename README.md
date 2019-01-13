@@ -1,16 +1,65 @@
 # semantic-ui-react-misc-components
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+some components built on top of semantic-ui-react.
 
-Describe semantic-ui-react-misc-components here.
+## online demo
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+[codesandbox](https://codesandbox.io/s/1v8q3p9n5q)
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+## offline demo
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+`git clone https://github.com/JaosnHsieh/semantic-ui-react-misc-components.git`
+
+`npm i`
+
+`npm start`
+
+
+## Usage
+
+`npm i --save semantic-ui-react-misc-components`
+
+add semantic-ui css file on your `index.html`
+
+`<link rel="stylesheet" ref="//cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">`
+
+availabes example components
+
+```js
+import{
+  OrderableListUsage,
+  OrderableListUsage2,
+  OrderableListUsage3,
+  RenderModalUsage,
+  BlurOverlayUsage,
+  EditableTextUsage,
+  EditableTextUsage2,
+  LazyInputUsage,
+  LazyInputUsage2,
+  LoadingSpanUsage,
+  PaginationTableUsage,
+  PaginationTableUsage2,
+  PaginationTableUsage3,
+  PaginationTableUsage4,
+  PlaceSearchUsage
+} from 'semantic-ui-react-misc-components';
+```
+
+use them in JSX as
+
+```
+<EditableTextUsage />
+
+```
+
+check every *Usage components to see how to use them.
+
+## Not Production Ready
+
+I put component's usages in the component file and include other npm modules without caring about file sizes for conviences.
+
+
+
+
+
+
