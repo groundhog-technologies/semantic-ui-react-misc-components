@@ -1,0 +1,31 @@
+.background-fadeout {
+  -webkit-animation-name: background-fadeout;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: background-fadeout;
+  animation-duration: 5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes background-fadeout {
+  0% {
+    background-color: #fe9a76;
+  }
+  100.0% {
+    background-color: white;
+  }
+}
+
+@keyframes background-fadeout {
+  0% {
+    background-color: #fe9a76;
+  }
+  100.0% {
+    background-color: white;
+  }
+}
