@@ -1,6 +1,6 @@
 {
   "name": "semantic-ui-react-misc-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "semantic-ui-react-misc-components React component",
   "homepage": "https://github.com/JaosnHsieh/semantic-ui-react-misc-components",
   "main": "lib/index.js",
