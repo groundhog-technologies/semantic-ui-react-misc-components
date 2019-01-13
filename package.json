@@ -1,8 +1,8 @@
 {
   "name": "semantic-ui-react-misc-components",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "semantic-ui-react-misc-components React component",
-  "homepage": "https://github.com/JaosnHsieh/semantic-ui-react-misc-components",
+  
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -38,7 +38,11 @@
     "nwb": "0.23.x"
   },
   "author": "",
-  "homepage": "",
+  "homepage": "https://github.com/JaosnHsieh/semantic-ui-react-misc-components",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://github.com/JaosnHsieh/semantic-ui-react-misc-components.git"
+  },
   "license": "MIT",
   "repository": "",
   "keywords": [
