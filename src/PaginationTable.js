@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Icon,
   Label,
@@ -7,15 +7,15 @@ import {
   Table,
   Message,
   Segment,
-  Input
-} from "semantic-ui-react";
-import _ from "lodash";
-import styles from "../css/PaginationTable.css";
-import LazyInput from "./LazyInput";
-import { filterByMultiProperties, uuid } from "./utils";
+  Input,
+} from 'semantic-ui-react';
+import _ from 'lodash';
+import styles from '../css/PaginationTable.css';
+import LazyInput from './LazyInput';
+import { filterByMultiProperties, uuid } from './utils';
 
 const SortingIcon = ({ asc = false }) =>
-  asc ? <Icon name={"caret down"} /> : <Icon name={"caret up"} />;
+  asc ? <Icon name={'caret down'} /> : <Icon name={'caret up'} />;
 
 class PaginationTable extends Component {
   constructor(props) {
@@ -24,10 +24,10 @@ class PaginationTable extends Component {
       currentPage: 1,
       sorting: {
         currentSortingFields: this.props.initSortingFields,
-        asc: this.props.initSortingOrderAsc
+        asc: this.props.initSortingOrderAsc,
       },
-      searchBarText: "",
-      accordionViewExpandedUuids: []
+      searchBarText: '',
+      accordionViewExpandedUuids: [],
     };
     if (!!this.props.accordionRowRender && props.items) {
       props.items.forEach((item, index) => {
@@ -42,7 +42,7 @@ class PaginationTable extends Component {
       nextProps.currentPage !== this.props.currentPage
     ) {
       this.setState({
-        currentPage: nextProps.currentPage
+        currentPage: nextProps.currentPage,
       });
     }
 
@@ -86,7 +86,7 @@ class PaginationTable extends Component {
       items = filterByMultiProperties(
         items,
         this.state.searchBarText,
-        this.props.searchKeyProperties
+        this.props.searchKeyProperties,
       );
     }
     return Math.ceil((isImmutable ? items.size : items.length) / itemsPerPage);
@@ -101,17 +101,17 @@ class PaginationTable extends Component {
 
   nextPage = () => {
     this.setState(prevState => ({
-      currentPage: prevState.currentPage + 1
+      currentPage: prevState.currentPage + 1,
     }));
   };
   prevPage = () => {
     this.setState(prevState => ({
-      currentPage: prevState.currentPage - 1
+      currentPage: prevState.currentPage - 1,
     }));
   };
   selectPage = pageNum => {
     this.setState({
-      currentPage: pageNum
+      currentPage: pageNum,
     });
   };
   hasNextPage = () => this.state.currentPage + 1 <= this.totalPageNum();
@@ -138,18 +138,18 @@ class PaginationTable extends Component {
     const { currentSortingFields, asc } = this.state.sorting;
 
     if (currentSortingFields) {
-      showingItems = _.orderBy(showingItems, currentSortingFields.join("."), [
-        asc ? "asc" : "desc"
+      showingItems = _.orderBy(showingItems, currentSortingFields.join('.'), [
+        asc ? 'asc' : 'desc',
       ]);
     }
-    if (typeof searchBarText === "string" && searchBarText.trim().length > 0) {
+    if (typeof searchBarText === 'string' && searchBarText.trim().length > 0) {
       showingItems = this.hasSearchKeys()
         ? (showingItems = filterByMultiProperties(
             showingItems,
             searchBarText,
             searchKeyProperties,
             !!customSearchFilterCreator &&
-              customSearchFilterCreator(searchBarText)
+              customSearchFilterCreator(searchBarText),
           ))
         : showingItems;
     }
@@ -165,7 +165,7 @@ class PaginationTable extends Component {
         // label={"Search"}
         fluid
         placeholder={
-          searchBarPlaceholder || `Search ${searchKeyProperties.join(", ")} ...`
+          searchBarPlaceholder || `Search ${searchKeyProperties.join(', ')} ...`
         }
         value={this.state.searchBarText}
       />
@@ -173,27 +173,27 @@ class PaginationTable extends Component {
 
     const TableEle = (
       <React.Fragment>
-        <Table unstackable style={{ margin: "0.5px 0" }} {...props}>
+        <Table unstackable style={{ margin: '0.5px 0' }} {...props}>
           <Table.Header>
             <Table.Row>
               {columnOption.map((c, i) => (
                 <Table.HeaderCell
-                  style={{ cursor: c.sortingFields ? "pointer" : "init" }}
+                  style={{ cursor: c.sortingFields ? 'pointer' : 'init' }}
                   onClick={() => {
                     if (!isImmutable && c.sortingFields) {
                       this.setState(prevState => ({
                         sorting: {
                           ...prevState.sorting,
                           currentSortingFields: [...c.sortingFields],
-                          asc: !prevState.sorting.asc
-                        }
+                          asc: !prevState.sorting.asc,
+                        },
                       }));
                     }
                   }}
                   key={i}
-                  {..._.get(c, "headerCellProps", {})}
+                  {..._.get(c, 'headerCellProps', {})}
                 >
-                  {c.header || ""}
+                  {c.header || ''}
                   {!isImmutable &&
                     c &&
                     c.sortingFields &&
@@ -221,7 +221,7 @@ class PaginationTable extends Component {
                     {columnOption.map((c, ii) => (
                       <Table.Cell
                         key={ii}
-                        style={{ cursor: c.onItemClick ? "pointer" : "auto" }}
+                        style={{ cursor: c.onItemClick ? 'pointer' : 'auto' }}
                         onClick={() => {
                           if (c.onItemClick) {
                             c.onItemClick(item);
@@ -232,15 +232,15 @@ class PaginationTable extends Component {
                             ) {
                               this.setState({
                                 accordionViewExpandedUuids: accordionViewExpandedUuids.filter(
-                                  id => id !== item.uuid
-                                )
+                                  id => id !== item.uuid,
+                                ),
                               });
                             } else {
                               this.setState({
                                 accordionViewExpandedUuids: [
                                   ...accordionViewExpandedUuids,
-                                  item.uuid
-                                ]
+                                  item.uuid,
+                                ],
                               });
                             }
                           }
@@ -248,13 +248,13 @@ class PaginationTable extends Component {
                       >
                         {ii === 0 && accordionRowRender ? (
                           accordionViewExpandedUuids.includes(item.uuid) ? (
-                            <Icon name={"caret down"} />
+                            <Icon name={'caret down'} />
                           ) : (
-                            <Icon name={"caret right"} />
+                            <Icon name={'caret right'} />
                           )
                         ) : null}
 
-                        {typeof c.cellValue === "string"
+                        {typeof c.cellValue === 'string'
                           ? isImmutable
                             ? item.get(c.cellValue)
                             : item[c.cellValue]
@@ -293,8 +293,8 @@ class PaginationTable extends Component {
     const PaginationBar =
       pagination &&
       (showingItems.length > 0 ? (
-        <div style={{ display: "flex" }}>
-          <Menu pagination style={{ margin: "0 auto" }}>
+        <div style={{ display: 'flex' }}>
+          <Menu pagination style={{ margin: '0 auto' }}>
             <Menu.Item
               as="a"
               icon
@@ -326,7 +326,7 @@ class PaginationTable extends Component {
           </Menu>
         </div>
       ) : null);
-    return typeof this.props.children === "function" ? (
+    return typeof this.props.children === 'function' ? (
       this.props.children({ SearchBar, TableEle, PaginationBar })
     ) : (
       <React.Fragment>
@@ -341,11 +341,12 @@ PaginationTable.propTypes = {
   columnOption: PropTypes.arrayOf(
     PropTypes.shape({
       header: PropTypes.string,
-      cellValue: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+      cellValue: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+        .isRequired,
       onItemClick: PropTypes.func,
       sortingFields: PropTypes.arrayOf(PropTypes.string),
-      headerCellProps: PropTypes.object
-    })
+      headerCellProps: PropTypes.object,
+    }),
   ),
   items: PropTypes.any,
   itemsPerPage: PropTypes.number,
@@ -357,7 +358,7 @@ PaginationTable.propTypes = {
   searchKeyProperties: PropTypes.arrayOf(PropTypes.string),
   accordionRow: PropTypes.func,
   customSearchFilterCreator: PropTypes.func, //customSearchFilterCreator(searchBarText) expected return a typical Array.filter function
-  searchBarPlaceholder: PropTypes.string
+  searchBarPlaceholder: PropTypes.string,
 };
 PaginationTable.defaultProps = {
   itemsPerPage: 10,
@@ -365,7 +366,7 @@ PaginationTable.defaultProps = {
   isImmutable: false,
   initSortingFields: [],
   initSortingOrderAsc: true,
-  searchKeyProperties: []
+  searchKeyProperties: [],
 };
 export default PaginationTable;
 
@@ -375,37 +376,37 @@ export const Usage = () => (
     items={[
       {
         id: 1,
-        name: "test-item-1 ???",
+        name: 'test-item-1 ???',
         nestedSortingTestProps: {
-          s: 5
-        }
+          s: 5,
+        },
       },
       {
         id: 2,
-        name: "test-item-2",
+        name: 'test-item-2',
         nestedSortingTestProps: {
-          s: 3
-        }
+          s: 3,
+        },
       },
       {
         id: 3,
-        name: "test-item-3",
+        name: 'test-item-3',
         nestedSortingTestProps: {
-          s: 2
-        }
-      }
+          s: 2,
+        },
+      },
     ]}
     columnOption={[
       {
-        header: "idHeader",
-        cellValue: "id",
+        header: 'idHeader',
+        cellValue: 'id',
         onItemClick: item => {
           console.log(`onClick qq ${item.id} `);
         },
-        sortingFields: ["id"]
+        sortingFields: ['id'],
       },
       {
-        header: "Name~",
+        header: 'Name~',
         cellValue: item =>
           `*custom text cannot be searched* property can item.name => ${
             item.name
@@ -413,19 +414,19 @@ export const Usage = () => (
         onItemClick: item => {
           alert(item.name);
         },
-        sortingFields: ["name"]
+        sortingFields: ['name'],
       },
       {
-        header: "NestingSortTest~",
+        header: 'NestingSortTest~',
         cellValue: item => item.nestedSortingTestProps.s,
-        sortingFields: ["nestedSortingTestProps", "s"]
-      }
+        sortingFields: ['nestedSortingTestProps', 's'],
+      },
     ]}
-    initSortingFields={["id"]}
+    initSortingFields={['id']}
     initSortingOrderAsc={false}
     pagination
     itemsPerPage={5}
-    searchKeyProperties={["id", "name"]}
+    searchKeyProperties={['id', 'name']}
   />
 );
 
@@ -435,28 +436,28 @@ export const Usage2 = () => (
     items={[
       {
         id: 1,
-        name: "test-item-1 ???"
+        name: 'test-item-1 ???',
       },
       {
         id: 2,
-        name: "test-item-2"
+        name: 'test-item-2',
       },
       {
         id: 3,
-        name: "test-item-3"
-      }
+        name: 'test-item-3',
+      },
     ]}
     columnOption={[
       {
-        header: "idHeader",
-        cellValue: "id",
+        header: 'idHeader',
+        cellValue: 'id',
         onItemClick: item => {
           alert(item.id);
         },
-        sortingFields: ["id"]
+        sortingFields: ['id'],
       },
       {
-        header: "Name~",
+        header: 'Name~',
         cellValue: item =>
           `*custom text cannot be searched* property can item.name => ${
             item.name
@@ -464,14 +465,14 @@ export const Usage2 = () => (
         onItemClick: item => {
           alert(item.name);
         },
-        sortingFields: ["name"]
-      }
+        sortingFields: ['name'],
+      },
     ]}
-    initSortingFields={["id"]}
+    initSortingFields={['id']}
     initSortingOrderAsc={false}
     pagination
     itemsPerPage={2}
-    searchKeyProperties={["id", "name"]}
+    searchKeyProperties={['id', 'name']}
   >
     {({ SearchBar, TableEle, PaginationBar }) => (
       <div>
@@ -489,42 +490,42 @@ export const Usage3 = () => (
     items={[
       {
         id: 1,
-        name: "item name 1"
+        name: 'item name 1',
       },
       {
         id: 2,
-        name: "item name 2"
+        name: 'item name 2',
       },
       {
         id: 3,
-        name: "item name 3"
-      }
+        name: 'item name 3',
+      },
     ]}
     columnOption={[
       {
-        header: "idHeader",
-        cellValue: "id",
+        header: 'idHeader',
+        cellValue: 'id',
         onItemClick: item => {
           console.log(`PaginationTableUsage3 onItemClick ${item.id}`);
         },
-        sortingFields: ["id"]
+        sortingFields: ['id'],
       },
       {
-        header: "Name~",
+        header: 'Name~',
         cellValue: item =>
           `*custom text cannot be searched* property can item.name => ${
             item.name
           } `,
-        sortingFields: ["name"]
-      }
+        sortingFields: ['name'],
+      },
     ]}
-    initSortingFields={["id"]}
+    initSortingFields={['id']}
     initSortingOrderAsc={false}
     pagination
     itemsPerPage={2}
-    searchKeyProperties={["id", "name"]}
+    searchKeyProperties={['id', 'name']}
     accordionRowRender={item => (
-      <div style={{ border: "red solid 2px " }}>
+      <div style={{ border: 'red solid 2px ' }}>
         item id : {item.id} render anything over here
       </div>
     )}
@@ -542,75 +543,75 @@ export const Usage3 = () => (
 // Usages4 customSearchFilterCreator & accordionRowRender example
 export const Usage4 = () => {
   const indexNameMap = {
-    1: "nestedIndex ohoh index 1 name",
-    2: "nestedIndex nono index 2 name",
-    3: "nestedIndex yaya index 3 name"
+    1: 'nestedIndex ohoh index 1 name',
+    2: 'nestedIndex nono index 2 name',
+    3: 'nestedIndex yaya index 3 name',
   };
   return (
     <PaginationTable
       items={[
         {
           id: 1,
-          name: "item name 1",
+          name: 'item name 1',
           nestedIndexCollections: {
             c1: [1],
-            c2: [2]
-          }
+            c2: [2],
+          },
         },
         {
           id: 2,
-          name: "item name 2",
+          name: 'item name 2',
           nestedIndexCollections: {
             c1: [2],
-            c2: [3]
-          }
+            c2: [3],
+          },
         },
         {
           id: 3,
-          name: "item name 3",
+          name: 'item name 3',
           nestedIndexCollections: {
             c1: [1, 3],
-            c2: [2]
-          }
-        }
+            c2: [2],
+          },
+        },
       ]}
       columnOption={[
         {
-          header: "idHeader",
-          cellValue: "id",
+          header: 'idHeader',
+          cellValue: 'id',
           onItemClick: item => {
             console.log(`PaginationTableUsage3 onItemClick ${item.id}`);
           },
-          sortingFields: ["id"],
+          sortingFields: ['id'],
           headerCellProps: {
-            width: 5
-          }
+            width: 5,
+          },
         },
         {
-          header: "Name~",
+          header: 'Name~',
           cellValue: item =>
             `*custom text cannot be searched* property can item.name => ${
               item.name
             } `,
-          sortingFields: ["name"]
-        }
+          sortingFields: ['name'],
+        },
       ]}
-      initSortingFields={["id"]}
+      initSortingFields={['id']}
       initSortingOrderAsc={false}
       pagination
       itemsPerPage={2}
-      searchKeyProperties={["id", "name"]}
+      searchKeyProperties={['id', 'name']}
       accordionRowRender={item => (
-        <div style={{ border: "yellow solid 2px " }}>
-          <h3>{"item.nestedIndexCollections.c1"}</h3>
+        <div style={{ border: 'yellow solid 2px ' }}>
+          <h3>{'item.nestedIndexCollections.c1'}</h3>
           <ol>
-            {_.get(item, "nestedIndexCollections.c1", []).map((i, ii) => (
+            {_.get(item, 'nestedIndexCollections.c1', []).map((i, ii) => (
               <li key={ii}>{indexNameMap[i]}</li>
             ))}
           </ol>
-          <h4>{"item.nestedIndexCollections.c2"}</h4>
+          <h4>{'item.nestedIndexCollections.c2'}</h4>
           <ol>
-            {_.get(item, "nestedIndexCollections.c2", []).map((i, ii) => (
+            {_.get(item, 'nestedIndexCollections.c2', []).map((i, ii) => (
               <li key={ii}>{indexNameMap[i]}</li>
             ))}
           </ol>
@@ -619,8 +620,8 @@ export const Usage4 = () => {
       customSearchFilterCreator={keyword => item => {
         console.log(`customSearchFilterCreator item`, item);
         if (keyword) {
-          return _.get(item, "nestedIndexCollections.c1", []).some(index =>
-            new RegExp(_.escapeRegExp(keyword), "ig").test(indexNameMap[index])
+          return _.get(item, 'nestedIndexCollections.c1', []).some(index =>
+            new RegExp(_.escapeRegExp(keyword), 'ig').test(indexNameMap[index]),
           );
         }
         return false;
