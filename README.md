@@ -2,6 +2,7 @@
 
 some components built on top of semantic-ui-react.
 
+![](demo.gif)
 ## online demo
 
 [codesandbox](https://codesandbox.io/s/1v8q3p9n5q)
