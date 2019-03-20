@@ -8,6 +8,7 @@ import {
   Message,
   Segment,
   Input,
+  Pagination,
 } from 'semantic-ui-react';
 import _ from 'lodash';
 import styles from '../css/PaginationTable.css';
@@ -294,38 +295,17 @@ class PaginationTable extends Component {
       pagination &&
       (showingItems.length > 0 ? (
         <div style={{ display: 'flex' }}>
-          <Menu pagination style={{ margin: '0 auto' }}>
-            <Menu.Item
-              as="a"
-              icon
-              onClick={this.prevPage}
-              disabled={!this.hasPrevPage()}
-            >
-              <Icon name="chevron left" />
-            </Menu.Item>
-            {this.pageNumArray().map((num, i) => (
-              <Menu.Item
-                as="a"
-                key={i}
-                onClick={() => {
-                  this.selectPage(num);
-                }}
-                active={num === this.state.currentPage}
-              >
-                {num}
-              </Menu.Item>
-            ))}
-            <Menu.Item
-              as="a"
-              icon
-              onClick={this.nextPage}
-              disabled={!this.hasNextPage()}
-            >
-              <Icon name="chevron right" />
-            </Menu.Item>
-          </Menu>
+          <Pagination
+            style={{ margin: '0 auto' }}
+            defaultActivePage={this.state.currentPage}
+            totalPages={this.totalPageNum()}
+            onPageChange={(_, { activePage }) => {
+              this.selectPage(activePage);
+            }}
+          />
         </div>
       ) : null);
+
     return typeof this.props.children === 'function' ? (
       this.props.children({ SearchBar, TableEle, PaginationBar })
     ) : (
