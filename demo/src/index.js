@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 
 import {
   OrderableListUsage,
@@ -16,18 +16,16 @@ import {
   PaginationTableUsage2,
   PaginationTableUsage3,
   PaginationTableUsage4,
-  PlaceSearchUsage
-} from "../../src";
-
+  PlaceSearchUsage,
+  AvatarUsage,
+} from '../../src';
 
 const MyDiv = ({ children, title }) => (
-  <div style={{ border: "2px solid black", padding: "10px", margin: "10px" }}>
+  <div style={{ border: '2px solid black', padding: '10px', margin: '10px' }}>
     {title && <h2>{title}</h2>}
     {children}
   </div>
 );
-
-
 
 class Demo extends Component {
   state = { loading: false };
@@ -39,6 +37,9 @@ class Demo extends Component {
   render() {
     return (
       <div>
+        <MyDiv title={'AvatarUpload'}>
+          <AvatarUsage />
+        </MyDiv>
         <MyDiv title={'OrderableListUsage'}>
           <OrderableListUsage />
         </MyDiv>
@@ -94,7 +95,6 @@ class Demo extends Component {
           <PaginationTableUsage4 />
         </MyDiv>
 
-
         <MyDiv title={'PlaceSearchUsage'}>
           <PlaceSearchUsage />
         </MyDiv>
@@ -103,19 +103,19 @@ class Demo extends Component {
   }
 }
 
-render(<Demo />, document.querySelector("#demo"));
+render(<Demo />, document.querySelector('#demo'));
 
 const appendCssOnHead = () => {
-  var cssId = "myCss"; // you could encode the css path itself to generate id..
+  var cssId = 'myCss'; // you could encode the css path itself to generate id..
   if (!document.getElementById(cssId)) {
-    var head = document.getElementsByTagName("head")[0];
-    var link = document.createElement("link");
+    var head = document.getElementsByTagName('head')[0];
+    var link = document.createElement('link');
     link.id = cssId;
-    link.rel = "stylesheet";
-    link.type = "text/css";
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
     link.href =
-      "//cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css";
-    link.media = "all";
+      '//cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css';
+    link.media = 'all';
     head.appendChild(link);
   }
 };
