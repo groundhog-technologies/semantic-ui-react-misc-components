@@ -3,18 +3,18 @@
 some components built on top of semantic-ui-react.
 
 ![](demo.gif)
+
 ## online demo
 
 [codesandbox](https://codesandbox.io/s/1v8q3p9n5q)
 
 ## offline demo
 
-`git clone https://github.com/JaosnHsieh/semantic-ui-react-misc-components.git`
+`git clone https://github.com/groundhog-technologies/semantic-ui-react-misc-components.git`
 
 `npm i`
 
 `npm start`
-
 
 ## Usage
 
@@ -24,10 +24,10 @@ add semantic-ui css file on your `index.html`
 
 `<link rel="stylesheet" ref="//cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">`
 
-availabes example components
+Available components
 
 ```js
-import{
+import {
   OrderableListUsage,
   OrderableListUsage2,
   OrderableListUsage3,
@@ -42,7 +42,7 @@ import{
   PaginationTableUsage2,
   PaginationTableUsage3,
   PaginationTableUsage4,
-  PlaceSearchUsage
+  PlaceSearchUsage,
 } from 'semantic-ui-react-misc-components';
 ```
 
@@ -53,14 +53,8 @@ use them in JSX as
 
 ```
 
-check every *Usage components to see how to use them.
+check every \*Usage components to see how to use them.
 
 ## Not Production Ready
 
-I put component's usages in the component file and include other npm modules without caring about file sizes for conviences.
-
-
-
-
-
-
+I put component's usages in the component file and include other npm modules without caring about file sizes for convenience.
