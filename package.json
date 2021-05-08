@@ -27,7 +27,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "axios": "^0.18.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.21",
     "prop-types": "15.5.10"
   },
   "peerDependencies": {
