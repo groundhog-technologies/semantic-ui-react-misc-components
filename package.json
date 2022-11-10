@@ -34,7 +34,7 @@
     "react": "16.x"
   },
   "devDependencies": {
-    "nwb": "0.23.x"
+    "nwb": "0.25.x"
   },
   "author": "",
   "homepage": "https://github.com/JaosnHsieh/semantic-ui-react-misc-components",
